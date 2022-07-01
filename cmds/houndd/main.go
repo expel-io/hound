@@ -14,7 +14,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/blang/semver"
+	"github.com/blang/semver/v4"
 	"github.com/hound-search/hound/api"
 	"github.com/hound-search/hound/config"
 	"github.com/hound-search/hound/searcher"
@@ -170,8 +170,8 @@ func main() {
 	}
 
 	if *flagDev {
-		info_log.Printf("[DEV] starting webpack-dev-server at localhost:8080...")
-		webpack := exec.Command("./node_modules/.bin/webpack-dev-server", "--mode", "development")
+		info_log.Printf("[DEV] starting webpack serve at localhost:8080...")
+		webpack := exec.Command("./node_modules/.bin/webpack", "serve", "--mode", "development")
 		webpack.Dir = basepath + "/../../"
 		webpack.Stdout = os.Stdout
 		webpack.Stderr = os.Stderr
